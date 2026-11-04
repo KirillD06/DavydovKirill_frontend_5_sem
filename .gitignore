@@ -1,0 +1,12 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+
+/docs/reports/*_скриншоты.*
+/docs/reports/*_исправления.*
+/docs/diagrams/*.png
+
+/docs/defense.md
