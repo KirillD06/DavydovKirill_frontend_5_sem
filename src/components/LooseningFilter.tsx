@@ -6,9 +6,10 @@ interface Props {
   onChange: (value: number) => void;
   onApply: () => void;
   onReset: () => void;
+  disabled?: boolean;
 }
 
-export function LooseningFilter({ value, onChange, onApply, onReset }: Props) {
+export function LooseningFilter({ value, onChange, onApply, onReset, disabled }: Props) {
   function submit(event: FormEvent) {
     event.preventDefault();
     onApply();
@@ -21,8 +22,9 @@ export function LooseningFilter({ value, onChange, onApply, onReset }: Props) {
       <div className="soil-range">
         <Form.Range
           id="maxLoosening"
-          min={1.1}
-          max={1.5}
+          disabled={disabled}
+          min={1}
+          max={2}
           step={0.01}
           value={value}
           onChange={(event) => onChange(Number(event.target.value))}
@@ -32,10 +34,10 @@ export function LooseningFilter({ value, onChange, onApply, onReset }: Props) {
         </output>
       </div>
       <div className="soil-filter-actions">
-        <Button type="submit" variant="warning">
+        <Button disabled={disabled} type="submit" variant="warning">
           Показать
         </Button>
-        <Button type="button" variant="link" onClick={onReset}>
+        <Button disabled={disabled} type="button" variant="link" onClick={onReset}>
           Сбросить
         </Button>
       </div>

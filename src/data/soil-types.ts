@@ -95,7 +95,7 @@ export const SOIL_TYPES: readonly SoilType[] = [
 ];
 
 export function filterSoilTypes(maxLoosening: number): SoilType[] {
-  return SOIL_TYPES.filter((soil) => soil.looseningFactor <= maxLoosening);
+  return SOIL_TYPES.filter((soil) => soil.looseningFactor !== null && soil.looseningFactor <= maxLoosening);
 }
 
 export function findSoilType(id: string | undefined): SoilType | undefined {

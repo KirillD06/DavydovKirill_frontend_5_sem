@@ -1,0 +1,3846 @@
+{
+  "_type": "Project",
+  "_id": "RIP-PROJECT",
+  "name": "Типы грунта",
+  "ownedElements": [
+    {
+      "_type": "ERDDataModel",
+      "_id": "er-DATAMODEL",
+      "_parent": {
+        "$ref": "RIP-PROJECT"
+      },
+      "name": "База данных",
+      "ownedElements": [
+        {
+          "_type": "ERDDiagram",
+          "_id": "er-DIAGRAM",
+          "_parent": {
+            "$ref": "er-DATAMODEL"
+          },
+          "name": "01 ER",
+          "visible": true,
+          "defaultDiagram": false,
+          "ownedViews": [
+            {
+              "_type": "ERDEntityView",
+              "_id": "er-view-users",
+              "_parent": {
+                "$ref": "er-DIAGRAM"
+              },
+              "model": {
+                "$ref": "er-users"
+              },
+              "visible": true,
+              "showShadow": false,
+              "autoResize": false,
+              "left": 20,
+              "top": 25,
+              "width": 350,
+              "height": 122,
+              "font": "Arial;20;0"
+            },
+            {
+              "_type": "ERDEntityView",
+              "_id": "er-view-likes",
+              "_parent": {
+                "$ref": "er-DIAGRAM"
+              },
+              "model": {
+                "$ref": "er-likes"
+              },
+              "visible": true,
+              "showShadow": false,
+              "autoResize": false,
+              "left": 435,
+              "top": 25,
+              "width": 265,
+              "height": 122,
+              "font": "Arial;20;0"
+            },
+            {
+              "_type": "ERDEntityView",
+              "_id": "er-view-soil_types",
+              "_parent": {
+                "$ref": "er-DIAGRAM"
+              },
+              "model": {
+                "$ref": "er-soil_types"
+              },
+              "visible": true,
+              "showShadow": false,
+              "autoResize": false,
+              "left": 98,
+              "top": 215,
+              "width": 525,
+              "height": 292,
+              "font": "Arial;20;0"
+            },
+            {
+              "_type": "ERDRelationshipView",
+              "_id": "er-view-rel-creator",
+              "_parent": {
+                "$ref": "er-DIAGRAM"
+              },
+              "model": {
+                "$ref": "er-rel-creator"
+              },
+              "visible": true,
+              "lineStyle": 0,
+              "points": "196:215;196:146",
+              "tail": {
+                "$ref": "er-view-soil_types"
+              },
+              "head": {
+                "$ref": "er-view-users"
+              },
+              "font": "Arial;20;0",
+              "showShadow": false
+            },
+            {
+              "_type": "ERDRelationshipView",
+              "_id": "er-view-rel-like-user",
+              "_parent": {
+                "$ref": "er-DIAGRAM"
+              },
+              "model": {
+                "$ref": "er-rel-like-user"
+              },
+              "visible": true,
+              "lineStyle": 0,
+              "points": "435:85;369:85",
+              "tail": {
+                "$ref": "er-view-likes"
+              },
+              "head": {
+                "$ref": "er-view-users"
+              },
+              "font": "Arial;20;0",
+              "showShadow": false
+            },
+            {
+              "_type": "ERDRelationshipView",
+              "_id": "er-view-rel-like-soil",
+              "_parent": {
+                "$ref": "er-DIAGRAM"
+              },
+              "model": {
+                "$ref": "er-rel-like-soil"
+              },
+              "visible": true,
+              "lineStyle": 0,
+              "points": "567:146;567:215",
+              "tail": {
+                "$ref": "er-view-likes"
+              },
+              "head": {
+                "$ref": "er-view-soil_types"
+              },
+              "font": "Arial;20;0",
+              "showShadow": false
+            }
+          ]
+        },
+        {
+          "_type": "ERDEntity",
+          "_id": "er-users",
+          "_parent": {
+            "$ref": "er-DATAMODEL"
+          },
+          "name": "users",
+          "columns": [
+            {
+              "_type": "ERDColumn",
+              "_id": "er-users-id",
+              "_parent": {
+                "$ref": "er-users"
+              },
+              "name": "id",
+              "type": "SERIAL",
+              "primaryKey": true
+            },
+            {
+              "_type": "ERDColumn",
+              "_id": "er-users-login",
+              "_parent": {
+                "$ref": "er-users"
+              },
+              "name": "login",
+              "type": "VARCHAR",
+              "length": "50"
+            },
+            {
+              "_type": "ERDColumn",
+              "_id": "er-users-password",
+              "_parent": {
+                "$ref": "er-users"
+              },
+              "name": "password",
+              "type": "VARCHAR",
+              "length": "100"
+            },
+            {
+              "_type": "ERDColumn",
+              "_id": "er-users-isModerator",
+              "_parent": {
+                "$ref": "er-users"
+              },
+              "name": "isModerator",
+              "type": "BOOLEAN"
+            }
+          ],
+          "ownedElements": []
+        },
+        {
+          "_type": "ERDEntity",
+          "_id": "er-soil_types",
+          "_parent": {
+            "$ref": "er-DATAMODEL"
+          },
+          "name": "soil_types",
+          "columns": [
+            {
+              "_type": "ERDColumn",
+              "_id": "er-soil_types-id",
+              "_parent": {
+                "$ref": "er-soil_types"
+              },
+              "name": "id",
+              "type": "SERIAL",
+              "primaryKey": true,
+              "nullable": false
+            },
+            {
+              "_type": "ERDColumn",
+              "_id": "er-soil_types-name",
+              "_parent": {
+                "$ref": "er-soil_types"
+              },
+              "name": "name",
+              "type": "VARCHAR",
+              "length": "100",
+              "nullable": false
+            },
+            {
+              "_type": "ERDColumn",
+              "_id": "er-soil_types-description",
+              "_parent": {
+                "$ref": "er-soil_types"
+              },
+              "name": "description",
+              "type": "VARCHAR",
+              "length": "1000",
+              "nullable": true
+            },
+            {
+              "_type": "ERDColumn",
+              "_id": "er-soil_types-status",
+              "_parent": {
+                "$ref": "er-soil_types"
+              },
+              "name": "status",
+              "type": "VARCHAR",
+              "length": "20",
+              "nullable": false
+            },
+            {
+              "_type": "ERDColumn",
+              "_id": "er-soil_types-imageUrl",
+              "_parent": {
+                "$ref": "er-soil_types"
+              },
+              "name": "imageUrl",
+              "type": "VARCHAR",
+              "length": "255",
+              "nullable": false
+            },
+            {
+              "_type": "ERDColumn",
+              "_id": "er-soil_types-videoUrl",
+              "_parent": {
+                "$ref": "er-soil_types"
+              },
+              "name": "videoUrl",
+              "type": "VARCHAR",
+              "length": "255",
+              "nullable": false
+            },
+            {
+              "_type": "ERDColumn",
+              "_id": "er-soil_types-looseningFactor",
+              "_parent": {
+                "$ref": "er-soil_types"
+              },
+              "name": "looseningFactor",
+              "type": "NUMERIC",
+              "length": "4,2",
+              "nullable": true
+            },
+            {
+              "_type": "ERDColumn",
+              "_id": "er-soil_types-density",
+              "_parent": {
+                "$ref": "er-soil_types"
+              },
+              "name": "density",
+              "type": "NUMERIC",
+              "length": "4,2",
+              "nullable": true
+            },
+            {
+              "_type": "ERDColumn",
+              "_id": "er-soil_types-createdAt",
+              "_parent": {
+                "$ref": "er-soil_types"
+              },
+              "name": "createdAt",
+              "type": "TIMESTAMP",
+              "nullable": false
+            },
+            {
+              "_type": "ERDColumn",
+              "_id": "er-soil_types-formedAt",
+              "_parent": {
+                "$ref": "er-soil_types"
+              },
+              "name": "formedAt",
+              "type": "TIMESTAMP",
+              "nullable": true
+            },
+            {
+              "_type": "ERDColumn",
+              "_id": "er-soil_types-creatorId",
+              "_parent": {
+                "$ref": "er-soil_types"
+              },
+              "name": "creatorId",
+              "type": "INTEGER",
+              "foreignKey": true,
+              "referenceTo": {
+                "$ref": "er-users-id"
+              },
+              "nullable": false
+            }
+          ],
+          "ownedElements": [
+            {
+              "_type": "ERDRelationship",
+              "_id": "er-rel-creator",
+              "_parent": {
+                "$ref": "er-soil_types"
+              },
+              "name": "",
+              "end1": {
+                "_type": "ERDRelationshipEnd",
+                "_id": "er-rel-creator-end1",
+                "_parent": {
+                  "$ref": "er-rel-creator"
+                },
+                "reference": {
+                  "$ref": "er-soil_types"
+                },
+                "cardinality": "0..*"
+              },
+              "end2": {
+                "_type": "ERDRelationshipEnd",
+                "_id": "er-rel-creator-end2",
+                "_parent": {
+                  "$ref": "er-rel-creator"
+                },
+                "reference": {
+                  "$ref": "er-users"
+                },
+                "cardinality": "1"
+              }
+            }
+          ]
+        },
+        {
+          "_type": "ERDEntity",
+          "_id": "er-likes",
+          "_parent": {
+            "$ref": "er-DATAMODEL"
+          },
+          "name": "likes",
+          "columns": [
+            {
+              "_type": "ERDColumn",
+              "_id": "er-likes-id",
+              "_parent": {
+                "$ref": "er-likes"
+              },
+              "name": "id",
+              "type": "SERIAL",
+              "primaryKey": true
+            },
+            {
+              "_type": "ERDColumn",
+              "_id": "er-likes-userId",
+              "_parent": {
+                "$ref": "er-likes"
+              },
+              "name": "userId",
+              "type": "INTEGER",
+              "foreignKey": true,
+              "referenceTo": {
+                "$ref": "er-users-id"
+              }
+            },
+            {
+              "_type": "ERDColumn",
+              "_id": "er-likes-soilTypeId",
+              "_parent": {
+                "$ref": "er-likes"
+              },
+              "name": "soilTypeId",
+              "type": "INTEGER",
+              "foreignKey": true,
+              "referenceTo": {
+                "$ref": "er-soil_types-id"
+              }
+            }
+          ],
+          "ownedElements": [
+            {
+              "_type": "ERDRelationship",
+              "_id": "er-rel-like-user",
+              "_parent": {
+                "$ref": "er-likes"
+              },
+              "name": "",
+              "end1": {
+                "_type": "ERDRelationshipEnd",
+                "_id": "er-rel-like-user-end1",
+                "_parent": {
+                  "$ref": "er-rel-like-user"
+                },
+                "reference": {
+                  "$ref": "er-likes"
+                },
+                "cardinality": "0..*"
+              },
+              "end2": {
+                "_type": "ERDRelationshipEnd",
+                "_id": "er-rel-like-user-end2",
+                "_parent": {
+                  "$ref": "er-rel-like-user"
+                },
+                "reference": {
+                  "$ref": "er-users"
+                },
+                "cardinality": "1"
+              }
+            },
+            {
+              "_type": "ERDRelationship",
+              "_id": "er-rel-like-soil",
+              "_parent": {
+                "$ref": "er-likes"
+              },
+              "name": "",
+              "end1": {
+                "_type": "ERDRelationshipEnd",
+                "_id": "er-rel-like-soil-end1",
+                "_parent": {
+                  "$ref": "er-rel-like-soil"
+                },
+                "reference": {
+                  "$ref": "er-likes"
+                },
+                "cardinality": "0..*"
+              },
+              "end2": {
+                "_type": "ERDRelationshipEnd",
+                "_id": "er-rel-like-soil-end2",
+                "_parent": {
+                  "$ref": "er-rel-like-soil"
+                },
+                "reference": {
+                  "$ref": "er-soil_types"
+                },
+                "cardinality": "1"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_type": "UMLModel",
+      "_id": "MODEL",
+      "_parent": {
+        "$ref": "RIP-PROJECT"
+      },
+      "name": "Приложение",
+      "ownedElements": [
+        {
+          "_type": "UMLClassDiagram",
+          "_id": "CLASSES",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "name": "02 Классы",
+          "ownedViews": [
+            {
+              "_type": "UMLPackageView",
+              "_id": "v-front",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "front"
+              },
+              "left": 20,
+              "top": 20,
+              "width": 680,
+              "height": 140,
+              "font": "Arial;20;0",
+              "visible": true,
+              "autoResize": false,
+              "showShadow": false,
+              "wordWrap": true
+            },
+            {
+              "_type": "UMLPackageView",
+              "_id": "v-backend",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "backend"
+              },
+              "left": 20,
+              "top": 310,
+              "width": 680,
+              "height": 300,
+              "font": "Arial;20;0",
+              "visible": true,
+              "autoResize": false,
+              "showShadow": false,
+              "wordWrap": true
+            },
+            {
+              "_type": "UMLPackageView",
+              "_id": "v-models",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "models"
+              },
+              "left": 20,
+              "top": 630,
+              "width": 680,
+              "height": 125,
+              "font": "Arial;20;0",
+              "visible": true,
+              "autoResize": false,
+              "showShadow": false,
+              "wordWrap": true
+            },
+            {
+              "_type": "UMLPackageView",
+              "_id": "v-db",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "db"
+              },
+              "left": 20,
+              "top": 790,
+              "width": 680,
+              "height": 175,
+              "font": "Arial;20;0",
+              "visible": true,
+              "autoResize": false,
+              "showShadow": false,
+              "wordWrap": true
+            },
+            {
+              "_type": "UMLClassView",
+              "_id": "v-feed",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "feed"
+              },
+              "left": 35,
+              "top": 65,
+              "width": 155,
+              "height": 80,
+              "font": "Arial;20;0",
+              "visible": true,
+              "autoResize": false,
+              "showShadow": false,
+              "wordWrap": true,
+              "suppressAttributes": false,
+              "suppressOperations": false
+            },
+            {
+              "_type": "UMLClassView",
+              "_id": "v-draft",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "draft"
+              },
+              "left": 200,
+              "top": 65,
+              "width": 140,
+              "height": 80,
+              "font": "Arial;20;0",
+              "visible": true,
+              "autoResize": false,
+              "showShadow": false,
+              "wordWrap": true,
+              "suppressAttributes": false,
+              "suppressOperations": false
+            },
+            {
+              "_type": "UMLClassView",
+              "_id": "v-catalog",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "catalog"
+              },
+              "left": 350,
+              "top": 65,
+              "width": 165,
+              "height": 80,
+              "font": "Arial;20;0",
+              "visible": true,
+              "autoResize": false,
+              "showShadow": false,
+              "wordWrap": true,
+              "suppressAttributes": false,
+              "suppressOperations": false
+            },
+            {
+              "_type": "UMLClassView",
+              "_id": "v-auth",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "auth"
+              },
+              "left": 525,
+              "top": 65,
+              "width": 160,
+              "height": 80,
+              "font": "Arial;20;0",
+              "visible": true,
+              "autoResize": false,
+              "showShadow": false,
+              "wordWrap": true,
+              "suppressAttributes": false,
+              "suppressOperations": false
+            },
+            {
+              "_type": "UMLInterfaceView",
+              "_id": "v-isoil",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "isoil"
+              },
+              "left": 240,
+              "top": 220,
+              "width": 26,
+              "height": 26,
+              "font": "Arial;20;0",
+              "visible": true,
+              "autoResize": false,
+              "showShadow": false,
+              "wordWrap": false,
+              "stereotypeDisplay": "icon",
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "nameCompartment": {
+                "$ref": "nc-isoil"
+              },
+              "subViews": [
+                {
+                  "_type": "UMLNameCompartmentView",
+                  "_id": "nc-isoil",
+                  "_parent": {
+                    "$ref": "v-isoil"
+                  },
+                  "model": {
+                    "$ref": "isoil"
+                  },
+                  "visible": false
+                }
+              ]
+            },
+            {
+              "_type": "UMLInterfaceView",
+              "_id": "v-iusers",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "iusers"
+              },
+              "left": 565,
+              "top": 220,
+              "width": 26,
+              "height": 26,
+              "font": "Arial;20;0",
+              "visible": true,
+              "autoResize": false,
+              "showShadow": false,
+              "wordWrap": false,
+              "stereotypeDisplay": "icon",
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "nameCompartment": {
+                "$ref": "nc-iusers"
+              },
+              "subViews": [
+                {
+                  "_type": "UMLNameCompartmentView",
+                  "_id": "nc-iusers",
+                  "_parent": {
+                    "$ref": "v-iusers"
+                  },
+                  "model": {
+                    "$ref": "iusers"
+                  },
+                  "visible": false
+                }
+              ]
+            },
+            {
+              "_type": "UMLDependencyView",
+              "_id": "v-page-feed",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "page-feed"
+              },
+              "tail": {
+                "$ref": "v-feed"
+              },
+              "head": {
+                "$ref": "v-isoil"
+              },
+              "points": "110:145;253:233",
+              "font": "Arial;20;0",
+              "lineStyle": 1,
+              "visible": true,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLDependencyView",
+              "_id": "v-page-draft",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "page-draft"
+              },
+              "tail": {
+                "$ref": "v-draft"
+              },
+              "head": {
+                "$ref": "v-isoil"
+              },
+              "points": "280:145;253:233",
+              "font": "Arial;20;0",
+              "lineStyle": 1,
+              "visible": true,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLDependencyView",
+              "_id": "v-page-catalog",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "page-catalog"
+              },
+              "tail": {
+                "$ref": "v-catalog"
+              },
+              "head": {
+                "$ref": "v-isoil"
+              },
+              "points": "447:145;253:233",
+              "font": "Arial;20;0",
+              "lineStyle": 1,
+              "visible": true,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLDependencyView",
+              "_id": "v-page-auth",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "page-auth"
+              },
+              "tail": {
+                "$ref": "v-auth"
+              },
+              "head": {
+                "$ref": "v-iusers"
+              },
+              "points": "610:145;578:233",
+              "font": "Arial;20;0",
+              "lineStyle": 1,
+              "visible": true,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLClassView",
+              "_id": "v-soil",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "soil"
+              },
+              "left": 40,
+              "top": 365,
+              "width": 350,
+              "height": 225,
+              "font": "Arial;20;0",
+              "visible": true,
+              "autoResize": false,
+              "showShadow": false,
+              "wordWrap": true,
+              "suppressAttributes": false,
+              "suppressOperations": false
+            },
+            {
+              "_type": "UMLInterfaceRealizationView",
+              "_id": "v-real-soil",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "real-soil"
+              },
+              "tail": {
+                "$ref": "v-soil"
+              },
+              "head": {
+                "$ref": "v-isoil"
+              },
+              "points": "215:365;253:246",
+              "font": "Arial;20;0",
+              "lineStyle": 1,
+              "visible": true,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLClassView",
+              "_id": "v-users",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "users"
+              },
+              "left": 410,
+              "top": 365,
+              "width": 270,
+              "height": 145,
+              "font": "Arial;20;0",
+              "visible": true,
+              "autoResize": false,
+              "showShadow": false,
+              "wordWrap": true,
+              "suppressAttributes": false,
+              "suppressOperations": false
+            },
+            {
+              "_type": "UMLInterfaceRealizationView",
+              "_id": "v-real-users",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "real-users"
+              },
+              "tail": {
+                "$ref": "v-users"
+              },
+              "head": {
+                "$ref": "v-iusers"
+              },
+              "points": "545:365;578:246",
+              "font": "Arial;20;0",
+              "lineStyle": 1,
+              "visible": true,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLClassView",
+              "_id": "v-msoil",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "msoil"
+              },
+              "left": 70,
+              "top": 680,
+              "width": 140,
+              "height": 60,
+              "font": "Arial;20;0",
+              "visible": true,
+              "autoResize": false,
+              "showShadow": false,
+              "wordWrap": true,
+              "suppressAttributes": false,
+              "suppressOperations": false
+            },
+            {
+              "_type": "UMLClassView",
+              "_id": "v-mlike",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "mlike"
+              },
+              "left": 230,
+              "top": 680,
+              "width": 140,
+              "height": 60,
+              "font": "Arial;20;0",
+              "visible": true,
+              "autoResize": false,
+              "showShadow": false,
+              "wordWrap": true,
+              "suppressAttributes": false,
+              "suppressOperations": false
+            },
+            {
+              "_type": "UMLClassView",
+              "_id": "v-muser",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "muser"
+              },
+              "left": 520,
+              "top": 680,
+              "width": 140,
+              "height": 60,
+              "font": "Arial;20;0",
+              "visible": true,
+              "autoResize": false,
+              "showShadow": false,
+              "wordWrap": true,
+              "suppressAttributes": false,
+              "suppressOperations": false
+            },
+            {
+              "_type": "UMLDependencyView",
+              "_id": "v-soil-model",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "soil-model"
+              },
+              "tail": {
+                "$ref": "v-soil"
+              },
+              "head": {
+                "$ref": "v-msoil"
+              },
+              "points": "130:590;140:680",
+              "font": "Arial;20;0",
+              "lineStyle": 1,
+              "visible": true,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLDependencyView",
+              "_id": "v-like-model",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "like-model"
+              },
+              "tail": {
+                "$ref": "v-soil"
+              },
+              "head": {
+                "$ref": "v-mlike"
+              },
+              "points": "280:590;300:680",
+              "font": "Arial;20;0",
+              "lineStyle": 1,
+              "visible": true,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLDependencyView",
+              "_id": "v-user-model",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "user-model"
+              },
+              "tail": {
+                "$ref": "v-users"
+              },
+              "head": {
+                "$ref": "v-muser"
+              },
+              "points": "545:510;590:680",
+              "font": "Arial;20;0",
+              "lineStyle": 1,
+              "visible": true,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLClassView",
+              "_id": "v-tsoil",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "tsoil"
+              },
+              "left": 65,
+              "top": 840,
+              "width": 160,
+              "height": 35,
+              "font": "Arial;20;0",
+              "visible": true,
+              "autoResize": false,
+              "showShadow": false,
+              "wordWrap": true,
+              "suppressAttributes": true,
+              "suppressOperations": true
+            },
+            {
+              "_type": "UMLClassView",
+              "_id": "v-tuser",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "tuser"
+              },
+              "left": 525,
+              "top": 840,
+              "width": 150,
+              "height": 35,
+              "font": "Arial;20;0",
+              "visible": true,
+              "autoResize": false,
+              "showShadow": false,
+              "wordWrap": true,
+              "suppressAttributes": true,
+              "suppressOperations": true
+            },
+            {
+              "_type": "UMLClassView",
+              "_id": "v-tlike",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "tlike"
+              },
+              "left": 210,
+              "top": 915,
+              "width": 150,
+              "height": 35,
+              "font": "Arial;20;0",
+              "visible": true,
+              "autoResize": false,
+              "showShadow": false,
+              "wordWrap": true,
+              "suppressAttributes": true,
+              "suppressOperations": true
+            },
+            {
+              "_type": "UMLDependencyView",
+              "_id": "v-map-msoil",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "map-msoil"
+              },
+              "tail": {
+                "$ref": "v-msoil"
+              },
+              "head": {
+                "$ref": "v-tsoil"
+              },
+              "points": "140:740;145:840",
+              "font": "Arial;20;0",
+              "lineStyle": 1,
+              "visible": true,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLDependencyView",
+              "_id": "v-map-mlike",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "map-mlike"
+              },
+              "tail": {
+                "$ref": "v-mlike"
+              },
+              "head": {
+                "$ref": "v-tlike"
+              },
+              "points": "300:740;285:915",
+              "font": "Arial;20;0",
+              "lineStyle": 1,
+              "visible": true,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLDependencyView",
+              "_id": "v-map-muser",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "map-muser"
+              },
+              "tail": {
+                "$ref": "v-muser"
+              },
+              "head": {
+                "$ref": "v-tuser"
+              },
+              "points": "590:740;600:840",
+              "font": "Arial;20;0",
+              "lineStyle": 1,
+              "visible": true,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "v-as-soil-like",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "as-soil-like"
+              },
+              "tail": {
+                "$ref": "v-tsoil"
+              },
+              "head": {
+                "$ref": "v-tlike"
+              },
+              "points": "145:875;210:932",
+              "lineStyle": 1,
+              "font": "Arial;20;0",
+              "visible": true,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "v-as-user-like",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "as-user-like"
+              },
+              "tail": {
+                "$ref": "v-tuser"
+              },
+              "head": {
+                "$ref": "v-tlike"
+              },
+              "points": "600:875;360:932",
+              "lineStyle": 1,
+              "font": "Arial;20;0",
+              "visible": true,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "v-as-user-soil",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "model": {
+                "$ref": "as-user-soil"
+              },
+              "tail": {
+                "$ref": "v-tuser"
+              },
+              "head": {
+                "$ref": "v-tsoil"
+              },
+              "points": "525:857;225:857",
+              "lineStyle": 1,
+              "font": "Arial;20;0",
+              "visible": true,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLTextView",
+              "_id": "label-isoil",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "text": "API soil_types",
+              "left": 275,
+              "top": 238,
+              "width": 145,
+              "height": 28,
+              "font": "Arial;20;1",
+              "horizontalAlignment": 0,
+              "wordWrap": false
+            },
+            {
+              "_type": "UMLTextView",
+              "_id": "label-iusers",
+              "_parent": {
+                "$ref": "CLASSES"
+              },
+              "text": "API users",
+              "left": 600,
+              "top": 238,
+              "width": 100,
+              "height": 28,
+              "font": "Arial;20;1",
+              "horizontalAlignment": 0,
+              "wordWrap": false
+            }
+          ],
+          "defaultDiagram": true
+        },
+        {
+          "_type": "UMLPackage",
+          "_id": "front",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "name": "React приложение",
+          "ownedElements": [
+            {
+              "_type": "UMLClass",
+              "_id": "feed",
+              "_parent": {
+                "$ref": "front"
+              },
+              "name": "Лента грунтов"
+            },
+            {
+              "_type": "UMLClass",
+              "_id": "draft",
+              "_parent": {
+                "$ref": "front"
+              },
+              "name": "Новый грунт"
+            },
+            {
+              "_type": "UMLClass",
+              "_id": "catalog",
+              "_parent": {
+                "$ref": "front"
+              },
+              "name": "Плитка грунтов"
+            },
+            {
+              "_type": "UMLClass",
+              "_id": "auth",
+              "_parent": {
+                "$ref": "front"
+              },
+              "name": "Вход в каталог"
+            }
+          ]
+        },
+        {
+          "_type": "UMLPackage",
+          "_id": "backend",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "name": "Бэкенд",
+          "ownedElements": [
+            {
+              "_type": "UMLClass",
+              "_id": "soil",
+              "_parent": {
+                "$ref": "backend"
+              },
+              "name": "Домен soil_types",
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "_id": "op-list",
+                  "_parent": {
+                    "$ref": "soil"
+                  },
+                  "name": "GET /api/soil_types",
+                  "parameters": []
+                },
+                {
+                  "_type": "UMLOperation",
+                  "_id": "op-feed",
+                  "_parent": {
+                    "$ref": "soil"
+                  },
+                  "name": "GET /api/soil_types/feed",
+                  "parameters": []
+                },
+                {
+                  "_type": "UMLOperation",
+                  "_id": "op-draft",
+                  "_parent": {
+                    "$ref": "soil"
+                  },
+                  "name": "GET /api/soil_types/draft",
+                  "parameters": []
+                },
+                {
+                  "_type": "UMLOperation",
+                  "_id": "op-create",
+                  "_parent": {
+                    "$ref": "soil"
+                  },
+                  "name": "POST /api/soil_types",
+                  "parameters": []
+                },
+                {
+                  "_type": "UMLOperation",
+                  "_id": "op-publish",
+                  "_parent": {
+                    "$ref": "soil"
+                  },
+                  "name": "PUT /api/soil_types/{id}/publish",
+                  "parameters": []
+                },
+                {
+                  "_type": "UMLOperation",
+                  "_id": "op-delete",
+                  "_parent": {
+                    "$ref": "soil"
+                  },
+                  "name": "DELETE /api/soil_types/{id}",
+                  "parameters": []
+                },
+                {
+                  "_type": "UMLOperation",
+                  "_id": "op-like",
+                  "_parent": {
+                    "$ref": "soil"
+                  },
+                  "name": "POST /api/soil_types/{id}/like",
+                  "parameters": []
+                }
+              ]
+            },
+            {
+              "_type": "UMLClass",
+              "_id": "users",
+              "_parent": {
+                "$ref": "backend"
+              },
+              "name": "Домен users",
+              "operations": [
+                {
+                  "_type": "UMLOperation",
+                  "_id": "op-register",
+                  "_parent": {
+                    "$ref": "users"
+                  },
+                  "name": "POST /api/users/register",
+                  "parameters": []
+                },
+                {
+                  "_type": "UMLOperation",
+                  "_id": "op-login",
+                  "_parent": {
+                    "$ref": "users"
+                  },
+                  "name": "POST /api/users/login",
+                  "parameters": []
+                },
+                {
+                  "_type": "UMLOperation",
+                  "_id": "op-logout",
+                  "_parent": {
+                    "$ref": "users"
+                  },
+                  "name": "POST /api/users/logout",
+                  "parameters": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "UMLPackage",
+          "_id": "models",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "name": "Модель",
+          "ownedElements": [
+            {
+              "_type": "UMLClass",
+              "_id": "msoil",
+              "_parent": {
+                "$ref": "models"
+              },
+              "name": "SoilType"
+            },
+            {
+              "_type": "UMLClass",
+              "_id": "mlike",
+              "_parent": {
+                "$ref": "models"
+              },
+              "name": "Like"
+            },
+            {
+              "_type": "UMLClass",
+              "_id": "muser",
+              "_parent": {
+                "$ref": "models"
+              },
+              "name": "User"
+            }
+          ]
+        },
+        {
+          "_type": "UMLPackage",
+          "_id": "db",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "name": "База данных",
+          "ownedElements": [
+            {
+              "_type": "UMLClass",
+              "_id": "tsoil",
+              "_parent": {
+                "$ref": "db"
+              },
+              "name": "soil_types"
+            },
+            {
+              "_type": "UMLClass",
+              "_id": "tuser",
+              "_parent": {
+                "$ref": "db"
+              },
+              "name": "users"
+            },
+            {
+              "_type": "UMLClass",
+              "_id": "tlike",
+              "_parent": {
+                "$ref": "db"
+              },
+              "name": "likes"
+            },
+            {
+              "_type": "UMLAssociation",
+              "_id": "as-soil-like",
+              "_parent": {
+                "$ref": "db"
+              },
+              "end1": {
+                "_type": "UMLAssociationEnd",
+                "_id": "as-soil-like-1",
+                "_parent": {
+                  "$ref": "as-soil-like"
+                },
+                "reference": {
+                  "$ref": "tsoil"
+                },
+                "multiplicity": "1",
+                "navigable": "unspecified"
+              },
+              "end2": {
+                "_type": "UMLAssociationEnd",
+                "_id": "as-soil-like-2",
+                "_parent": {
+                  "$ref": "as-soil-like"
+                },
+                "reference": {
+                  "$ref": "tlike"
+                },
+                "multiplicity": "0..*",
+                "navigable": "unspecified"
+              }
+            },
+            {
+              "_type": "UMLAssociation",
+              "_id": "as-user-like",
+              "_parent": {
+                "$ref": "db"
+              },
+              "end1": {
+                "_type": "UMLAssociationEnd",
+                "_id": "as-user-like-1",
+                "_parent": {
+                  "$ref": "as-user-like"
+                },
+                "reference": {
+                  "$ref": "tuser"
+                },
+                "multiplicity": "1",
+                "navigable": "unspecified"
+              },
+              "end2": {
+                "_type": "UMLAssociationEnd",
+                "_id": "as-user-like-2",
+                "_parent": {
+                  "$ref": "as-user-like"
+                },
+                "reference": {
+                  "$ref": "tlike"
+                },
+                "multiplicity": "0..*",
+                "navigable": "unspecified"
+              }
+            },
+            {
+              "_type": "UMLAssociation",
+              "_id": "as-user-soil",
+              "_parent": {
+                "$ref": "db"
+              },
+              "end1": {
+                "_type": "UMLAssociationEnd",
+                "_id": "as-user-soil-1",
+                "_parent": {
+                  "$ref": "as-user-soil"
+                },
+                "reference": {
+                  "$ref": "tuser"
+                },
+                "multiplicity": "1",
+                "navigable": "unspecified"
+              },
+              "end2": {
+                "_type": "UMLAssociationEnd",
+                "_id": "as-user-soil-2",
+                "_parent": {
+                  "$ref": "as-user-soil"
+                },
+                "reference": {
+                  "$ref": "tsoil"
+                },
+                "multiplicity": "0..*",
+                "navigable": "unspecified"
+              }
+            }
+          ]
+        },
+        {
+          "_type": "UMLInterface",
+          "_id": "isoil",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "name": "API soil_types"
+        },
+        {
+          "_type": "UMLInterface",
+          "_id": "iusers",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "name": "API users"
+        },
+        {
+          "_type": "UMLDependency",
+          "_id": "page-feed",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "source": {
+            "$ref": "feed"
+          },
+          "target": {
+            "$ref": "isoil"
+          }
+        },
+        {
+          "_type": "UMLDependency",
+          "_id": "page-draft",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "source": {
+            "$ref": "draft"
+          },
+          "target": {
+            "$ref": "isoil"
+          }
+        },
+        {
+          "_type": "UMLDependency",
+          "_id": "page-catalog",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "source": {
+            "$ref": "catalog"
+          },
+          "target": {
+            "$ref": "isoil"
+          }
+        },
+        {
+          "_type": "UMLDependency",
+          "_id": "page-auth",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "source": {
+            "$ref": "auth"
+          },
+          "target": {
+            "$ref": "iusers"
+          }
+        },
+        {
+          "_type": "UMLInterfaceRealization",
+          "_id": "real-soil",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "source": {
+            "$ref": "soil"
+          },
+          "target": {
+            "$ref": "isoil"
+          }
+        },
+        {
+          "_type": "UMLInterfaceRealization",
+          "_id": "real-users",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "source": {
+            "$ref": "users"
+          },
+          "target": {
+            "$ref": "iusers"
+          }
+        },
+        {
+          "_type": "UMLDependency",
+          "_id": "soil-model",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "source": {
+            "$ref": "soil"
+          },
+          "target": {
+            "$ref": "msoil"
+          }
+        },
+        {
+          "_type": "UMLDependency",
+          "_id": "like-model",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "source": {
+            "$ref": "soil"
+          },
+          "target": {
+            "$ref": "mlike"
+          }
+        },
+        {
+          "_type": "UMLDependency",
+          "_id": "user-model",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "source": {
+            "$ref": "users"
+          },
+          "target": {
+            "$ref": "muser"
+          }
+        },
+        {
+          "_type": "UMLDependency",
+          "_id": "map-msoil",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "source": {
+            "$ref": "msoil"
+          },
+          "target": {
+            "$ref": "tsoil"
+          }
+        },
+        {
+          "_type": "UMLDependency",
+          "_id": "map-mlike",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "source": {
+            "$ref": "mlike"
+          },
+          "target": {
+            "$ref": "tlike"
+          }
+        },
+        {
+          "_type": "UMLDependency",
+          "_id": "map-muser",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "source": {
+            "$ref": "muser"
+          },
+          "target": {
+            "$ref": "tuser"
+          }
+        },
+        {
+          "_type": "UMLInteraction",
+          "_id": "INTERACTION",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "name": "Работа с типом грунта",
+          "participants": [
+            {
+              "_type": "UMLLifeline",
+              "_id": "lf-front",
+              "_parent": {
+                "$ref": "INTERACTION"
+              },
+              "name": "Фронтенд",
+              "represent": {
+                "$ref": "attr-lf-front"
+              }
+            },
+            {
+              "_type": "UMLLifeline",
+              "_id": "lf-soil",
+              "_parent": {
+                "$ref": "INTERACTION"
+              },
+              "name": "Типы грунта",
+              "represent": {
+                "$ref": "attr-lf-soil"
+              }
+            },
+            {
+              "_type": "UMLLifeline",
+              "_id": "lf-users",
+              "_parent": {
+                "$ref": "INTERACTION"
+              },
+              "name": "Пользователи",
+              "represent": {
+                "$ref": "attr-lf-users"
+              }
+            }
+          ],
+          "messages": [
+            {
+              "_type": "UMLMessage",
+              "_id": "msg-0-0",
+              "_parent": {
+                "$ref": "INTERACTION"
+              },
+              "name": "",
+              "source": {
+                "$ref": "lf-front"
+              },
+              "target": {
+                "$ref": "lf-users"
+              },
+              "messageSort": "synchCall",
+              "arguments": "login, password",
+              "signature": {
+                "$ref": "op-login"
+              }
+            },
+            {
+              "_type": "UMLMessage",
+              "_id": "msg-0-1",
+              "_parent": {
+                "$ref": "INTERACTION"
+              },
+              "name": "200; id, login; Set-Cookie: sessionId",
+              "source": {
+                "$ref": "lf-users"
+              },
+              "target": {
+                "$ref": "lf-front"
+              },
+              "messageSort": "reply",
+              "arguments": ""
+            },
+            {
+              "_type": "UMLMessage",
+              "_id": "msg-1-0",
+              "_parent": {
+                "$ref": "INTERACTION"
+              },
+              "name": "",
+              "source": {
+                "$ref": "lf-front"
+              },
+              "target": {
+                "$ref": "lf-soil"
+              },
+              "messageSort": "synchCall",
+              "arguments": "maxLoosening=1.2",
+              "signature": {
+                "$ref": "op-list"
+              }
+            },
+            {
+              "_type": "UMLMessage",
+              "_id": "msg-1-1",
+              "_parent": {
+                "$ref": "INTERACTION"
+              },
+              "name": "200; [id, isMine, …]",
+              "source": {
+                "$ref": "lf-soil"
+              },
+              "target": {
+                "$ref": "lf-front"
+              },
+              "messageSort": "reply",
+              "arguments": ""
+            },
+            {
+              "_type": "UMLMessage",
+              "_id": "msg-2-0",
+              "_parent": {
+                "$ref": "INTERACTION"
+              },
+              "name": "",
+              "source": {
+                "$ref": "lf-front"
+              },
+              "target": {
+                "$ref": "lf-soil"
+              },
+              "messageSort": "synchCall",
+              "arguments": "name, image, video",
+              "signature": {
+                "$ref": "op-create"
+              }
+            },
+            {
+              "_type": "UMLMessage",
+              "_id": "msg-2-1",
+              "_parent": {
+                "$ref": "INTERACTION"
+              },
+              "name": "201; id",
+              "source": {
+                "$ref": "lf-soil"
+              },
+              "target": {
+                "$ref": "lf-front"
+              },
+              "messageSort": "reply",
+              "arguments": ""
+            },
+            {
+              "_type": "UMLMessage",
+              "_id": "msg-3-0",
+              "_parent": {
+                "$ref": "INTERACTION"
+              },
+              "name": "",
+              "source": {
+                "$ref": "lf-front"
+              },
+              "target": {
+                "$ref": "lf-soil"
+              },
+              "messageSort": "synchCall",
+              "arguments": "",
+              "signature": {
+                "$ref": "op-draft"
+              }
+            },
+            {
+              "_type": "UMLMessage",
+              "_id": "msg-3-1",
+              "_parent": {
+                "$ref": "INTERACTION"
+              },
+              "name": "200; поля черновика",
+              "source": {
+                "$ref": "lf-soil"
+              },
+              "target": {
+                "$ref": "lf-front"
+              },
+              "messageSort": "reply",
+              "arguments": ""
+            },
+            {
+              "_type": "UMLMessage",
+              "_id": "msg-4-0",
+              "_parent": {
+                "$ref": "INTERACTION"
+              },
+              "name": "",
+              "source": {
+                "$ref": "lf-front"
+              },
+              "target": {
+                "$ref": "lf-soil"
+              },
+              "messageSort": "synchCall",
+              "arguments": "description, looseningFactor, density",
+              "signature": {
+                "$ref": "op-publish"
+              }
+            },
+            {
+              "_type": "UMLMessage",
+              "_id": "msg-4-1",
+              "_parent": {
+                "$ref": "INTERACTION"
+              },
+              "name": "200; id, isMine=1",
+              "source": {
+                "$ref": "lf-soil"
+              },
+              "target": {
+                "$ref": "lf-front"
+              },
+              "messageSort": "reply",
+              "arguments": ""
+            },
+            {
+              "_type": "UMLMessage",
+              "_id": "msg-5-0",
+              "_parent": {
+                "$ref": "INTERACTION"
+              },
+              "name": "",
+              "source": {
+                "$ref": "lf-front"
+              },
+              "target": {
+                "$ref": "lf-soil"
+              },
+              "messageSort": "synchCall",
+              "arguments": "",
+              "signature": {
+                "$ref": "op-feed"
+              }
+            },
+            {
+              "_type": "UMLMessage",
+              "_id": "msg-5-1",
+              "_parent": {
+                "$ref": "INTERACTION"
+              },
+              "name": "200; id, isLiked",
+              "source": {
+                "$ref": "lf-soil"
+              },
+              "target": {
+                "$ref": "lf-front"
+              },
+              "messageSort": "reply",
+              "arguments": ""
+            },
+            {
+              "_type": "UMLMessage",
+              "_id": "msg-6-0",
+              "_parent": {
+                "$ref": "INTERACTION"
+              },
+              "name": "",
+              "source": {
+                "$ref": "lf-front"
+              },
+              "target": {
+                "$ref": "lf-soil"
+              },
+              "messageSort": "synchCall",
+              "arguments": "id, next=true",
+              "signature": {
+                "$ref": "op-feed"
+              }
+            },
+            {
+              "_type": "UMLMessage",
+              "_id": "msg-6-1",
+              "_parent": {
+                "$ref": "INTERACTION"
+              },
+              "name": "200; id, isLiked",
+              "source": {
+                "$ref": "lf-soil"
+              },
+              "target": {
+                "$ref": "lf-front"
+              },
+              "messageSort": "reply",
+              "arguments": ""
+            },
+            {
+              "_type": "UMLMessage",
+              "_id": "msg-7-0",
+              "_parent": {
+                "$ref": "INTERACTION"
+              },
+              "name": "",
+              "source": {
+                "$ref": "lf-front"
+              },
+              "target": {
+                "$ref": "lf-soil"
+              },
+              "messageSort": "synchCall",
+              "arguments": "value=1",
+              "signature": {
+                "$ref": "op-like"
+              }
+            },
+            {
+              "_type": "UMLMessage",
+              "_id": "msg-7-1",
+              "_parent": {
+                "$ref": "INTERACTION"
+              },
+              "name": "201; likesCount, isLiked=1",
+              "source": {
+                "$ref": "lf-soil"
+              },
+              "target": {
+                "$ref": "lf-front"
+              },
+              "messageSort": "reply",
+              "arguments": ""
+            }
+          ],
+          "ownedElements": [
+            {
+              "_type": "UMLSequenceDiagram",
+              "_id": "SEQUENCE",
+              "_parent": {
+                "$ref": "INTERACTION"
+              },
+              "name": "03 Последовательность",
+              "showSequenceNumber": false,
+              "showSignature": true,
+              "showActivation": false,
+              "ownedViews": [
+                {
+                  "_type": "UMLSeqLifelineView",
+                  "_id": "v-lf-front",
+                  "_parent": {
+                    "$ref": "SEQUENCE"
+                  },
+                  "model": {
+                    "$ref": "lf-front"
+                  },
+                  "left": 20,
+                  "top": 20,
+                  "width": 160,
+                  "height": 1400,
+                  "font": "Arial;27;0",
+                  "showType": false,
+                  "wordWrap": true,
+                  "linePart": {
+                    "$ref": "line-lf-front"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "UMLLinePartView",
+                      "_id": "line-lf-front",
+                      "_parent": {
+                        "$ref": "v-lf-front"
+                      },
+                      "model": {
+                        "$ref": "lf-front"
+                      },
+                      "left": 100.0,
+                      "top": 80,
+                      "width": 1,
+                      "height": 1260,
+                      "font": "Arial;27;0"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLSeqLifelineView",
+                  "_id": "v-lf-soil",
+                  "_parent": {
+                    "$ref": "SEQUENCE"
+                  },
+                  "model": {
+                    "$ref": "lf-soil"
+                  },
+                  "left": 670,
+                  "top": 20,
+                  "width": 230,
+                  "height": 1400,
+                  "font": "Arial;27;0",
+                  "showType": false,
+                  "wordWrap": true,
+                  "linePart": {
+                    "$ref": "line-lf-soil"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "UMLLinePartView",
+                      "_id": "line-lf-soil",
+                      "_parent": {
+                        "$ref": "v-lf-soil"
+                      },
+                      "model": {
+                        "$ref": "lf-soil"
+                      },
+                      "left": 785,
+                      "top": 80,
+                      "width": 1,
+                      "height": 1260,
+                      "font": "Arial;27;0"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLSeqLifelineView",
+                  "_id": "v-lf-users",
+                  "_parent": {
+                    "$ref": "SEQUENCE"
+                  },
+                  "model": {
+                    "$ref": "lf-users"
+                  },
+                  "left": 317,
+                  "top": 20,
+                  "width": 230,
+                  "height": 1400,
+                  "font": "Arial;27;0",
+                  "showType": false,
+                  "wordWrap": true,
+                  "linePart": {
+                    "$ref": "line-lf-users"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "UMLLinePartView",
+                      "_id": "line-lf-users",
+                      "_parent": {
+                        "$ref": "v-lf-users"
+                      },
+                      "model": {
+                        "$ref": "lf-users"
+                      },
+                      "left": 432,
+                      "top": 80,
+                      "width": 1,
+                      "height": 1260,
+                      "font": "Arial;27;0"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLSeqMessageView",
+                  "_id": "v-msg-0-0",
+                  "_parent": {
+                    "$ref": "SEQUENCE"
+                  },
+                  "model": {
+                    "$ref": "msg-0-0"
+                  },
+                  "tail": {
+                    "$ref": "line-lf-front"
+                  },
+                  "head": {
+                    "$ref": "line-lf-users"
+                  },
+                  "points": "100:175;432:175",
+                  "lineStyle": 0,
+                  "font": "Arial;27;0",
+                  "showType": false,
+                  "nameLabel": {
+                    "$ref": "msg-0-0-label"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "EdgeLabelView",
+                      "_id": "msg-0-0-label",
+                      "_parent": {
+                        "$ref": "v-msg-0-0"
+                      },
+                      "hostEdge": {
+                        "$ref": "v-msg-0-0"
+                      },
+                      "edgePosition": 1,
+                      "distance": 20,
+                      "alpha": 1.5707963267948966,
+                      "wordWrap": true,
+                      "width": 308,
+                      "font": "Arial;27;0"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLSeqMessageView",
+                  "_id": "v-msg-0-1",
+                  "_parent": {
+                    "$ref": "SEQUENCE"
+                  },
+                  "model": {
+                    "$ref": "msg-0-1"
+                  },
+                  "tail": {
+                    "$ref": "line-lf-users"
+                  },
+                  "head": {
+                    "$ref": "line-lf-front"
+                  },
+                  "points": "432:230;100:230",
+                  "lineStyle": 0,
+                  "font": "Arial;27;0",
+                  "showType": false,
+                  "nameLabel": {
+                    "$ref": "msg-0-1-label"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "EdgeLabelView",
+                      "_id": "msg-0-1-label",
+                      "_parent": {
+                        "$ref": "v-msg-0-1"
+                      },
+                      "hostEdge": {
+                        "$ref": "v-msg-0-1"
+                      },
+                      "edgePosition": 1,
+                      "distance": 20,
+                      "alpha": 1.5707963267948966,
+                      "wordWrap": true,
+                      "width": 308,
+                      "font": "Arial;27;0"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLSeqMessageView",
+                  "_id": "v-msg-1-0",
+                  "_parent": {
+                    "$ref": "SEQUENCE"
+                  },
+                  "model": {
+                    "$ref": "msg-1-0"
+                  },
+                  "tail": {
+                    "$ref": "line-lf-front"
+                  },
+                  "head": {
+                    "$ref": "line-lf-soil"
+                  },
+                  "points": "100:353;785:353",
+                  "lineStyle": 0,
+                  "font": "Arial;27;0",
+                  "showType": false,
+                  "nameLabel": {
+                    "$ref": "msg-1-0-label"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "EdgeLabelView",
+                      "_id": "msg-1-0-label",
+                      "_parent": {
+                        "$ref": "v-msg-1-0"
+                      },
+                      "hostEdge": {
+                        "$ref": "v-msg-1-0"
+                      },
+                      "edgePosition": 1,
+                      "distance": 40,
+                      "alpha": 1.5707963267948966,
+                      "wordWrap": true,
+                      "width": 570,
+                      "font": "Arial;27;0"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLSeqMessageView",
+                  "_id": "v-msg-1-1",
+                  "_parent": {
+                    "$ref": "SEQUENCE"
+                  },
+                  "model": {
+                    "$ref": "msg-1-1"
+                  },
+                  "tail": {
+                    "$ref": "line-lf-soil"
+                  },
+                  "head": {
+                    "$ref": "line-lf-front"
+                  },
+                  "points": "785:398;100:398",
+                  "lineStyle": 0,
+                  "font": "Arial;27;0",
+                  "showType": false,
+                  "nameLabel": {
+                    "$ref": "msg-1-1-label"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "EdgeLabelView",
+                      "_id": "msg-1-1-label",
+                      "_parent": {
+                        "$ref": "v-msg-1-1"
+                      },
+                      "hostEdge": {
+                        "$ref": "v-msg-1-1"
+                      },
+                      "edgePosition": 1,
+                      "distance": 20,
+                      "alpha": 1.5707963267948966,
+                      "wordWrap": true,
+                      "width": 570,
+                      "font": "Arial;27;0"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLSeqMessageView",
+                  "_id": "v-msg-2-0",
+                  "_parent": {
+                    "$ref": "SEQUENCE"
+                  },
+                  "model": {
+                    "$ref": "msg-2-0"
+                  },
+                  "tail": {
+                    "$ref": "line-lf-front"
+                  },
+                  "head": {
+                    "$ref": "line-lf-soil"
+                  },
+                  "points": "100:533;785:533",
+                  "lineStyle": 0,
+                  "font": "Arial;27;0",
+                  "showType": false,
+                  "nameLabel": {
+                    "$ref": "msg-2-0-label"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "EdgeLabelView",
+                      "_id": "msg-2-0-label",
+                      "_parent": {
+                        "$ref": "v-msg-2-0"
+                      },
+                      "hostEdge": {
+                        "$ref": "v-msg-2-0"
+                      },
+                      "edgePosition": 1,
+                      "distance": 55,
+                      "alpha": 1.5707963267948966,
+                      "wordWrap": true,
+                      "width": 570,
+                      "font": "Arial;27;0"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLSeqMessageView",
+                  "_id": "v-msg-2-1",
+                  "_parent": {
+                    "$ref": "SEQUENCE"
+                  },
+                  "model": {
+                    "$ref": "msg-2-1"
+                  },
+                  "tail": {
+                    "$ref": "line-lf-soil"
+                  },
+                  "head": {
+                    "$ref": "line-lf-front"
+                  },
+                  "points": "785:578;100:578",
+                  "lineStyle": 0,
+                  "font": "Arial;27;0",
+                  "showType": false,
+                  "nameLabel": {
+                    "$ref": "msg-2-1-label"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "EdgeLabelView",
+                      "_id": "msg-2-1-label",
+                      "_parent": {
+                        "$ref": "v-msg-2-1"
+                      },
+                      "hostEdge": {
+                        "$ref": "v-msg-2-1"
+                      },
+                      "edgePosition": 1,
+                      "distance": 20,
+                      "alpha": 1.5707963267948966,
+                      "wordWrap": true,
+                      "width": 570,
+                      "font": "Arial;27;0"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLSeqMessageView",
+                  "_id": "v-msg-3-0",
+                  "_parent": {
+                    "$ref": "SEQUENCE"
+                  },
+                  "model": {
+                    "$ref": "msg-3-0"
+                  },
+                  "tail": {
+                    "$ref": "line-lf-front"
+                  },
+                  "head": {
+                    "$ref": "line-lf-soil"
+                  },
+                  "points": "100:658;785:658",
+                  "lineStyle": 0,
+                  "font": "Arial;27;0",
+                  "showType": false,
+                  "nameLabel": {
+                    "$ref": "msg-3-0-label"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "EdgeLabelView",
+                      "_id": "msg-3-0-label",
+                      "_parent": {
+                        "$ref": "v-msg-3-0"
+                      },
+                      "hostEdge": {
+                        "$ref": "v-msg-3-0"
+                      },
+                      "edgePosition": 1,
+                      "distance": 22,
+                      "alpha": 1.5707963267948966,
+                      "wordWrap": true,
+                      "width": 570,
+                      "font": "Arial;27;0"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLSeqMessageView",
+                  "_id": "v-msg-3-1",
+                  "_parent": {
+                    "$ref": "SEQUENCE"
+                  },
+                  "model": {
+                    "$ref": "msg-3-1"
+                  },
+                  "tail": {
+                    "$ref": "line-lf-soil"
+                  },
+                  "head": {
+                    "$ref": "line-lf-front"
+                  },
+                  "points": "785:703;100:703",
+                  "lineStyle": 0,
+                  "font": "Arial;27;0",
+                  "showType": false,
+                  "nameLabel": {
+                    "$ref": "msg-3-1-label"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "EdgeLabelView",
+                      "_id": "msg-3-1-label",
+                      "_parent": {
+                        "$ref": "v-msg-3-1"
+                      },
+                      "hostEdge": {
+                        "$ref": "v-msg-3-1"
+                      },
+                      "edgePosition": 1,
+                      "distance": 20,
+                      "alpha": 1.5707963267948966,
+                      "wordWrap": true,
+                      "width": 570,
+                      "font": "Arial;27;0"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLSeqMessageView",
+                  "_id": "v-msg-4-0",
+                  "_parent": {
+                    "$ref": "SEQUENCE"
+                  },
+                  "model": {
+                    "$ref": "msg-4-0"
+                  },
+                  "tail": {
+                    "$ref": "line-lf-front"
+                  },
+                  "head": {
+                    "$ref": "line-lf-soil"
+                  },
+                  "points": "100:843;785:843",
+                  "lineStyle": 0,
+                  "font": "Arial;27;0",
+                  "showType": false,
+                  "nameLabel": {
+                    "$ref": "msg-4-0-label"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "EdgeLabelView",
+                      "_id": "msg-4-0-label",
+                      "_parent": {
+                        "$ref": "v-msg-4-0"
+                      },
+                      "hostEdge": {
+                        "$ref": "v-msg-4-0"
+                      },
+                      "edgePosition": 1,
+                      "distance": 55,
+                      "alpha": 1.5707963267948966,
+                      "wordWrap": true,
+                      "width": 570,
+                      "font": "Arial;27;0"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLSeqMessageView",
+                  "_id": "v-msg-4-1",
+                  "_parent": {
+                    "$ref": "SEQUENCE"
+                  },
+                  "model": {
+                    "$ref": "msg-4-1"
+                  },
+                  "tail": {
+                    "$ref": "line-lf-soil"
+                  },
+                  "head": {
+                    "$ref": "line-lf-front"
+                  },
+                  "points": "785:888;100:888",
+                  "lineStyle": 0,
+                  "font": "Arial;27;0",
+                  "showType": false,
+                  "nameLabel": {
+                    "$ref": "msg-4-1-label"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "EdgeLabelView",
+                      "_id": "msg-4-1-label",
+                      "_parent": {
+                        "$ref": "v-msg-4-1"
+                      },
+                      "hostEdge": {
+                        "$ref": "v-msg-4-1"
+                      },
+                      "edgePosition": 1,
+                      "distance": 20,
+                      "alpha": 1.5707963267948966,
+                      "wordWrap": true,
+                      "width": 570,
+                      "font": "Arial;27;0"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLSeqMessageView",
+                  "_id": "v-msg-5-0",
+                  "_parent": {
+                    "$ref": "SEQUENCE"
+                  },
+                  "model": {
+                    "$ref": "msg-5-0"
+                  },
+                  "tail": {
+                    "$ref": "line-lf-front"
+                  },
+                  "head": {
+                    "$ref": "line-lf-soil"
+                  },
+                  "points": "100:973;785:973",
+                  "lineStyle": 0,
+                  "font": "Arial;27;0",
+                  "showType": false,
+                  "nameLabel": {
+                    "$ref": "msg-5-0-label"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "EdgeLabelView",
+                      "_id": "msg-5-0-label",
+                      "_parent": {
+                        "$ref": "v-msg-5-0"
+                      },
+                      "hostEdge": {
+                        "$ref": "v-msg-5-0"
+                      },
+                      "edgePosition": 1,
+                      "distance": 22,
+                      "alpha": 1.5707963267948966,
+                      "wordWrap": true,
+                      "width": 570,
+                      "font": "Arial;27;0"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLSeqMessageView",
+                  "_id": "v-msg-5-1",
+                  "_parent": {
+                    "$ref": "SEQUENCE"
+                  },
+                  "model": {
+                    "$ref": "msg-5-1"
+                  },
+                  "tail": {
+                    "$ref": "line-lf-soil"
+                  },
+                  "head": {
+                    "$ref": "line-lf-front"
+                  },
+                  "points": "785:1018;100:1018",
+                  "lineStyle": 0,
+                  "font": "Arial;27;0",
+                  "showType": false,
+                  "nameLabel": {
+                    "$ref": "msg-5-1-label"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "EdgeLabelView",
+                      "_id": "msg-5-1-label",
+                      "_parent": {
+                        "$ref": "v-msg-5-1"
+                      },
+                      "hostEdge": {
+                        "$ref": "v-msg-5-1"
+                      },
+                      "edgePosition": 1,
+                      "distance": 20,
+                      "alpha": 1.5707963267948966,
+                      "wordWrap": true,
+                      "width": 570,
+                      "font": "Arial;27;0"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLSeqMessageView",
+                  "_id": "v-msg-6-0",
+                  "_parent": {
+                    "$ref": "SEQUENCE"
+                  },
+                  "model": {
+                    "$ref": "msg-6-0"
+                  },
+                  "tail": {
+                    "$ref": "line-lf-front"
+                  },
+                  "head": {
+                    "$ref": "line-lf-soil"
+                  },
+                  "points": "100:1128;785:1128",
+                  "lineStyle": 0,
+                  "font": "Arial;27;0",
+                  "showType": false,
+                  "nameLabel": {
+                    "$ref": "msg-6-0-label"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "EdgeLabelView",
+                      "_id": "msg-6-0-label",
+                      "_parent": {
+                        "$ref": "v-msg-6-0"
+                      },
+                      "hostEdge": {
+                        "$ref": "v-msg-6-0"
+                      },
+                      "edgePosition": 1,
+                      "distance": 40,
+                      "alpha": 1.5707963267948966,
+                      "wordWrap": true,
+                      "width": 570,
+                      "font": "Arial;27;0"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLSeqMessageView",
+                  "_id": "v-msg-6-1",
+                  "_parent": {
+                    "$ref": "SEQUENCE"
+                  },
+                  "model": {
+                    "$ref": "msg-6-1"
+                  },
+                  "tail": {
+                    "$ref": "line-lf-soil"
+                  },
+                  "head": {
+                    "$ref": "line-lf-front"
+                  },
+                  "points": "785:1173;100:1173",
+                  "lineStyle": 0,
+                  "font": "Arial;27;0",
+                  "showType": false,
+                  "nameLabel": {
+                    "$ref": "msg-6-1-label"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "EdgeLabelView",
+                      "_id": "msg-6-1-label",
+                      "_parent": {
+                        "$ref": "v-msg-6-1"
+                      },
+                      "hostEdge": {
+                        "$ref": "v-msg-6-1"
+                      },
+                      "edgePosition": 1,
+                      "distance": 20,
+                      "alpha": 1.5707963267948966,
+                      "wordWrap": true,
+                      "width": 570,
+                      "font": "Arial;27;0"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLSeqMessageView",
+                  "_id": "v-msg-7-0",
+                  "_parent": {
+                    "$ref": "SEQUENCE"
+                  },
+                  "model": {
+                    "$ref": "msg-7-0"
+                  },
+                  "tail": {
+                    "$ref": "line-lf-front"
+                  },
+                  "head": {
+                    "$ref": "line-lf-soil"
+                  },
+                  "points": "100:1308;785:1308",
+                  "lineStyle": 0,
+                  "font": "Arial;27;0",
+                  "showType": false,
+                  "nameLabel": {
+                    "$ref": "msg-7-0-label"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "EdgeLabelView",
+                      "_id": "msg-7-0-label",
+                      "_parent": {
+                        "$ref": "v-msg-7-0"
+                      },
+                      "hostEdge": {
+                        "$ref": "v-msg-7-0"
+                      },
+                      "edgePosition": 1,
+                      "distance": 50,
+                      "alpha": 1.5707963267948966,
+                      "wordWrap": true,
+                      "width": 570,
+                      "font": "Arial;27;0"
+                    }
+                  ]
+                },
+                {
+                  "_type": "UMLSeqMessageView",
+                  "_id": "v-msg-7-1",
+                  "_parent": {
+                    "$ref": "SEQUENCE"
+                  },
+                  "model": {
+                    "$ref": "msg-7-1"
+                  },
+                  "tail": {
+                    "$ref": "line-lf-soil"
+                  },
+                  "head": {
+                    "$ref": "line-lf-front"
+                  },
+                  "points": "785:1353;100:1353",
+                  "lineStyle": 0,
+                  "font": "Arial;27;0",
+                  "showType": false,
+                  "nameLabel": {
+                    "$ref": "msg-7-1-label"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "EdgeLabelView",
+                      "_id": "msg-7-1-label",
+                      "_parent": {
+                        "$ref": "v-msg-7-1"
+                      },
+                      "hostEdge": {
+                        "$ref": "v-msg-7-1"
+                      },
+                      "edgePosition": 1,
+                      "distance": 20,
+                      "alpha": 1.5707963267948966,
+                      "wordWrap": true,
+                      "width": 570,
+                      "font": "Arial;27;0"
+                    }
+                  ]
+                }
+              ],
+              "defaultDiagram": false
+            }
+          ]
+        },
+        {
+          "_type": "UMLAttribute",
+          "_id": "attr-lf-front",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "name": "Фронтенд",
+          "type": {
+            "$ref": "front"
+          }
+        },
+        {
+          "_type": "UMLAttribute",
+          "_id": "attr-lf-soil",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "name": "Типы грунта",
+          "type": {
+            "$ref": "soil"
+          }
+        },
+        {
+          "_type": "UMLAttribute",
+          "_id": "attr-lf-users",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "name": "Пользователи",
+          "type": {
+            "$ref": "users"
+          }
+        },
+        {
+          "_type": "UMLUseCaseDiagram",
+          "_id": "USECASES",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "name": "04 Прецеденты React",
+          "ownedViews": [
+            {
+              "_type": "UMLUseCaseSubjectView",
+              "_id": "v-uc-system",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-system"
+              },
+              "left": 150,
+              "top": 18,
+              "width": 770,
+              "height": 765,
+              "font": "Arial;20;0",
+              "showShadow": false,
+              "wordWrap": true
+            },
+            {
+              "_type": "UMLActorView",
+              "_id": "v-uc-guest",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-guest"
+              },
+              "left": 10,
+              "top": 190,
+              "width": 116,
+              "height": 84,
+              "font": "Arial;20;0",
+              "showShadow": false,
+              "wordWrap": true,
+              "suppressAttributes": true,
+              "suppressOperations": true
+            },
+            {
+              "_type": "UMLActorView",
+              "_id": "v-uc-author",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-author"
+              },
+              "left": 982,
+              "top": 190,
+              "width": 116,
+              "height": 84,
+              "font": "Arial;20;0",
+              "showShadow": false,
+              "wordWrap": true,
+              "suppressAttributes": true,
+              "suppressOperations": true
+            },
+            {
+              "_type": "UMLUseCaseView",
+              "_id": "v-uc-catalog",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-catalog"
+              },
+              "left": 398,
+              "top": 72,
+              "width": 235,
+              "height": 67,
+              "font": "Arial;20;0",
+              "showShadow": false,
+              "wordWrap": true,
+              "containerView": {
+                "$ref": "v-uc-system"
+              },
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "suppressExtensionPoints": true
+            },
+            {
+              "_type": "UMLUseCaseView",
+              "_id": "v-uc-filter",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-filter"
+              },
+              "left": 398,
+              "top": 152,
+              "width": 235,
+              "height": 67,
+              "font": "Arial;20;0",
+              "showShadow": false,
+              "wordWrap": true,
+              "containerView": {
+                "$ref": "v-uc-system"
+              },
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "suppressExtensionPoints": true
+            },
+            {
+              "_type": "UMLUseCaseView",
+              "_id": "v-uc-feed",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-feed"
+              },
+              "left": 398,
+              "top": 232,
+              "width": 235,
+              "height": 67,
+              "font": "Arial;20;0",
+              "showShadow": false,
+              "wordWrap": true,
+              "containerView": {
+                "$ref": "v-uc-system"
+              },
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "suppressExtensionPoints": true
+            },
+            {
+              "_type": "UMLUseCaseView",
+              "_id": "v-uc-detail",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-detail"
+              },
+              "left": 398,
+              "top": 312,
+              "width": 235,
+              "height": 67,
+              "font": "Arial;20;0",
+              "showShadow": false,
+              "wordWrap": true,
+              "containerView": {
+                "$ref": "v-uc-system"
+              },
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "suppressExtensionPoints": true
+            },
+            {
+              "_type": "UMLUseCaseView",
+              "_id": "v-uc-login",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-login"
+              },
+              "left": 176,
+              "top": 405,
+              "width": 225,
+              "height": 67,
+              "font": "Arial;20;0",
+              "showShadow": false,
+              "wordWrap": true,
+              "containerView": {
+                "$ref": "v-uc-system"
+              },
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "suppressExtensionPoints": true
+            },
+            {
+              "_type": "UMLUseCaseView",
+              "_id": "v-uc-add",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-add"
+              },
+              "left": 624,
+              "top": 395,
+              "width": 215,
+              "height": 67,
+              "font": "Arial;20;0",
+              "showShadow": false,
+              "wordWrap": true,
+              "containerView": {
+                "$ref": "v-uc-system"
+              },
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "suppressExtensionPoints": true
+            },
+            {
+              "_type": "UMLUseCaseView",
+              "_id": "v-uc-like",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-like"
+              },
+              "left": 624,
+              "top": 487,
+              "width": 215,
+              "height": 67,
+              "font": "Arial;20;0",
+              "showShadow": false,
+              "wordWrap": true,
+              "containerView": {
+                "$ref": "v-uc-system"
+              },
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "suppressExtensionPoints": true
+            },
+            {
+              "_type": "UMLUseCaseView",
+              "_id": "v-uc-delete",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-delete"
+              },
+              "left": 624,
+              "top": 579,
+              "width": 215,
+              "height": 67,
+              "font": "Arial;20;0",
+              "showShadow": false,
+              "wordWrap": true,
+              "containerView": {
+                "$ref": "v-uc-system"
+              },
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "suppressExtensionPoints": true
+            },
+            {
+              "_type": "UMLUseCaseView",
+              "_id": "v-uc-logout",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-logout"
+              },
+              "left": 624,
+              "top": 671,
+              "width": 215,
+              "height": 67,
+              "font": "Arial;20;0",
+              "showShadow": false,
+              "wordWrap": true,
+              "containerView": {
+                "$ref": "v-uc-system"
+              },
+              "suppressAttributes": true,
+              "suppressOperations": true,
+              "suppressExtensionPoints": true
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "v-uc-guest-uc-catalog",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-guest-uc-catalog"
+              },
+              "tail": {
+                "$ref": "v-uc-guest"
+              },
+              "head": {
+                "$ref": "v-uc-catalog"
+              },
+              "points": "68:232;515:105",
+              "lineStyle": 1,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "v-uc-author-uc-catalog",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-author-uc-catalog"
+              },
+              "tail": {
+                "$ref": "v-uc-author"
+              },
+              "head": {
+                "$ref": "v-uc-catalog"
+              },
+              "points": "943:232;515:105",
+              "lineStyle": 1,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "v-uc-guest-uc-filter",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-guest-uc-filter"
+              },
+              "tail": {
+                "$ref": "v-uc-guest"
+              },
+              "head": {
+                "$ref": "v-uc-filter"
+              },
+              "points": "68:232;515:185",
+              "lineStyle": 1,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "v-uc-author-uc-filter",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-author-uc-filter"
+              },
+              "tail": {
+                "$ref": "v-uc-author"
+              },
+              "head": {
+                "$ref": "v-uc-filter"
+              },
+              "points": "943:232;515:185",
+              "lineStyle": 1,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "v-uc-guest-uc-feed",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-guest-uc-feed"
+              },
+              "tail": {
+                "$ref": "v-uc-guest"
+              },
+              "head": {
+                "$ref": "v-uc-feed"
+              },
+              "points": "68:232;515:265",
+              "lineStyle": 1,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "v-uc-author-uc-feed",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-author-uc-feed"
+              },
+              "tail": {
+                "$ref": "v-uc-author"
+              },
+              "head": {
+                "$ref": "v-uc-feed"
+              },
+              "points": "943:232;515:265",
+              "lineStyle": 1,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "v-uc-guest-uc-detail",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-guest-uc-detail"
+              },
+              "tail": {
+                "$ref": "v-uc-guest"
+              },
+              "head": {
+                "$ref": "v-uc-detail"
+              },
+              "points": "68:232;515:345",
+              "lineStyle": 1,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "v-uc-author-uc-detail",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-author-uc-detail"
+              },
+              "tail": {
+                "$ref": "v-uc-author"
+              },
+              "head": {
+                "$ref": "v-uc-detail"
+              },
+              "points": "943:232;515:345",
+              "lineStyle": 1,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "v-uc-guest-uc-login",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-guest-uc-login"
+              },
+              "tail": {
+                "$ref": "v-uc-guest"
+              },
+              "head": {
+                "$ref": "v-uc-login"
+              },
+              "points": "68:232;288:438",
+              "lineStyle": 1,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "v-uc-author-uc-add",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-author-uc-add"
+              },
+              "tail": {
+                "$ref": "v-uc-author"
+              },
+              "head": {
+                "$ref": "v-uc-add"
+              },
+              "points": "1035:221;849:221;849:426;731:426",
+              "lineStyle": 0,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "v-uc-author-uc-like",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-author-uc-like"
+              },
+              "tail": {
+                "$ref": "v-uc-author"
+              },
+              "head": {
+                "$ref": "v-uc-like"
+              },
+              "points": "1035:230;871:230;871:518;731:518",
+              "lineStyle": 0,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "v-uc-author-uc-delete",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-author-uc-delete"
+              },
+              "tail": {
+                "$ref": "v-uc-author"
+              },
+              "head": {
+                "$ref": "v-uc-delete"
+              },
+              "points": "1035:239;893:239;893:610;731:610",
+              "lineStyle": 0,
+              "showShadow": false
+            },
+            {
+              "_type": "UMLAssociationView",
+              "_id": "v-uc-author-uc-logout",
+              "_parent": {
+                "$ref": "USECASES"
+              },
+              "model": {
+                "$ref": "uc-author-uc-logout"
+              },
+              "tail": {
+                "$ref": "v-uc-author"
+              },
+              "head": {
+                "$ref": "v-uc-logout"
+              },
+              "points": "1035:248;915:248;915:702;731:702",
+              "lineStyle": 0,
+              "showShadow": false
+            }
+          ]
+        },
+        {
+          "_type": "UMLUseCaseSubject",
+          "_id": "uc-system",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "name": "Веб-приложение «Типы грунта»",
+          "ownedElements": [
+            {
+              "_type": "UMLUseCase",
+              "_id": "uc-catalog",
+              "_parent": {
+                "$ref": "uc-system"
+              },
+              "name": "Просмотреть плитку"
+            },
+            {
+              "_type": "UMLUseCase",
+              "_id": "uc-filter",
+              "_parent": {
+                "$ref": "uc-system"
+              },
+              "name": "Отфильтровать грунты"
+            },
+            {
+              "_type": "UMLUseCase",
+              "_id": "uc-feed",
+              "_parent": {
+                "$ref": "uc-system"
+              },
+              "name": "Просмотреть ленту"
+            },
+            {
+              "_type": "UMLUseCase",
+              "_id": "uc-detail",
+              "_parent": {
+                "$ref": "uc-system"
+              },
+              "name": "Просмотреть грунт"
+            },
+            {
+              "_type": "UMLUseCase",
+              "_id": "uc-login",
+              "_parent": {
+                "$ref": "uc-system"
+              },
+              "name": "Войти или зарегистрироваться"
+            },
+            {
+              "_type": "UMLUseCase",
+              "_id": "uc-add",
+              "_parent": {
+                "$ref": "uc-system"
+              },
+              "name": "Добавить грунт"
+            },
+            {
+              "_type": "UMLUseCase",
+              "_id": "uc-like",
+              "_parent": {
+                "$ref": "uc-system"
+              },
+              "name": "Поставить или снять лайк"
+            },
+            {
+              "_type": "UMLUseCase",
+              "_id": "uc-delete",
+              "_parent": {
+                "$ref": "uc-system"
+              },
+              "name": "Удалить свой грунт"
+            },
+            {
+              "_type": "UMLUseCase",
+              "_id": "uc-logout",
+              "_parent": {
+                "$ref": "uc-system"
+              },
+              "name": "Выйти"
+            }
+          ]
+        },
+        {
+          "_type": "UMLActor",
+          "_id": "uc-guest",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "name": "Гость",
+          "ownedElements": [
+            {
+              "_type": "UMLAssociation",
+              "_id": "uc-guest-uc-catalog",
+              "_parent": {
+                "$ref": "uc-guest"
+              },
+              "end1": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-guest-uc-catalog-a",
+                "_parent": {
+                  "$ref": "uc-guest-uc-catalog"
+                },
+                "reference": {
+                  "$ref": "uc-guest"
+                }
+              },
+              "end2": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-guest-uc-catalog-b",
+                "_parent": {
+                  "$ref": "uc-guest-uc-catalog"
+                },
+                "reference": {
+                  "$ref": "uc-catalog"
+                }
+              }
+            },
+            {
+              "_type": "UMLAssociation",
+              "_id": "uc-guest-uc-filter",
+              "_parent": {
+                "$ref": "uc-guest"
+              },
+              "end1": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-guest-uc-filter-a",
+                "_parent": {
+                  "$ref": "uc-guest-uc-filter"
+                },
+                "reference": {
+                  "$ref": "uc-guest"
+                }
+              },
+              "end2": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-guest-uc-filter-b",
+                "_parent": {
+                  "$ref": "uc-guest-uc-filter"
+                },
+                "reference": {
+                  "$ref": "uc-filter"
+                }
+              }
+            },
+            {
+              "_type": "UMLAssociation",
+              "_id": "uc-guest-uc-feed",
+              "_parent": {
+                "$ref": "uc-guest"
+              },
+              "end1": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-guest-uc-feed-a",
+                "_parent": {
+                  "$ref": "uc-guest-uc-feed"
+                },
+                "reference": {
+                  "$ref": "uc-guest"
+                }
+              },
+              "end2": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-guest-uc-feed-b",
+                "_parent": {
+                  "$ref": "uc-guest-uc-feed"
+                },
+                "reference": {
+                  "$ref": "uc-feed"
+                }
+              }
+            },
+            {
+              "_type": "UMLAssociation",
+              "_id": "uc-guest-uc-detail",
+              "_parent": {
+                "$ref": "uc-guest"
+              },
+              "end1": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-guest-uc-detail-a",
+                "_parent": {
+                  "$ref": "uc-guest-uc-detail"
+                },
+                "reference": {
+                  "$ref": "uc-guest"
+                }
+              },
+              "end2": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-guest-uc-detail-b",
+                "_parent": {
+                  "$ref": "uc-guest-uc-detail"
+                },
+                "reference": {
+                  "$ref": "uc-detail"
+                }
+              }
+            },
+            {
+              "_type": "UMLAssociation",
+              "_id": "uc-guest-uc-login",
+              "_parent": {
+                "$ref": "uc-guest"
+              },
+              "end1": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-guest-uc-login-a",
+                "_parent": {
+                  "$ref": "uc-guest-uc-login"
+                },
+                "reference": {
+                  "$ref": "uc-guest"
+                }
+              },
+              "end2": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-guest-uc-login-b",
+                "_parent": {
+                  "$ref": "uc-guest-uc-login"
+                },
+                "reference": {
+                  "$ref": "uc-login"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "_type": "UMLActor",
+          "_id": "uc-author",
+          "_parent": {
+            "$ref": "MODEL"
+          },
+          "name": "Создатель",
+          "ownedElements": [
+            {
+              "_type": "UMLAssociation",
+              "_id": "uc-author-uc-catalog",
+              "_parent": {
+                "$ref": "uc-author"
+              },
+              "end1": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-author-uc-catalog-a",
+                "_parent": {
+                  "$ref": "uc-author-uc-catalog"
+                },
+                "reference": {
+                  "$ref": "uc-author"
+                }
+              },
+              "end2": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-author-uc-catalog-b",
+                "_parent": {
+                  "$ref": "uc-author-uc-catalog"
+                },
+                "reference": {
+                  "$ref": "uc-catalog"
+                }
+              }
+            },
+            {
+              "_type": "UMLAssociation",
+              "_id": "uc-author-uc-filter",
+              "_parent": {
+                "$ref": "uc-author"
+              },
+              "end1": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-author-uc-filter-a",
+                "_parent": {
+                  "$ref": "uc-author-uc-filter"
+                },
+                "reference": {
+                  "$ref": "uc-author"
+                }
+              },
+              "end2": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-author-uc-filter-b",
+                "_parent": {
+                  "$ref": "uc-author-uc-filter"
+                },
+                "reference": {
+                  "$ref": "uc-filter"
+                }
+              }
+            },
+            {
+              "_type": "UMLAssociation",
+              "_id": "uc-author-uc-feed",
+              "_parent": {
+                "$ref": "uc-author"
+              },
+              "end1": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-author-uc-feed-a",
+                "_parent": {
+                  "$ref": "uc-author-uc-feed"
+                },
+                "reference": {
+                  "$ref": "uc-author"
+                }
+              },
+              "end2": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-author-uc-feed-b",
+                "_parent": {
+                  "$ref": "uc-author-uc-feed"
+                },
+                "reference": {
+                  "$ref": "uc-feed"
+                }
+              }
+            },
+            {
+              "_type": "UMLAssociation",
+              "_id": "uc-author-uc-detail",
+              "_parent": {
+                "$ref": "uc-author"
+              },
+              "end1": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-author-uc-detail-a",
+                "_parent": {
+                  "$ref": "uc-author-uc-detail"
+                },
+                "reference": {
+                  "$ref": "uc-author"
+                }
+              },
+              "end2": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-author-uc-detail-b",
+                "_parent": {
+                  "$ref": "uc-author-uc-detail"
+                },
+                "reference": {
+                  "$ref": "uc-detail"
+                }
+              }
+            },
+            {
+              "_type": "UMLAssociation",
+              "_id": "uc-author-uc-add",
+              "_parent": {
+                "$ref": "uc-author"
+              },
+              "end1": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-author-uc-add-a",
+                "_parent": {
+                  "$ref": "uc-author-uc-add"
+                },
+                "reference": {
+                  "$ref": "uc-author"
+                }
+              },
+              "end2": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-author-uc-add-b",
+                "_parent": {
+                  "$ref": "uc-author-uc-add"
+                },
+                "reference": {
+                  "$ref": "uc-add"
+                }
+              }
+            },
+            {
+              "_type": "UMLAssociation",
+              "_id": "uc-author-uc-like",
+              "_parent": {
+                "$ref": "uc-author"
+              },
+              "end1": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-author-uc-like-a",
+                "_parent": {
+                  "$ref": "uc-author-uc-like"
+                },
+                "reference": {
+                  "$ref": "uc-author"
+                }
+              },
+              "end2": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-author-uc-like-b",
+                "_parent": {
+                  "$ref": "uc-author-uc-like"
+                },
+                "reference": {
+                  "$ref": "uc-like"
+                }
+              }
+            },
+            {
+              "_type": "UMLAssociation",
+              "_id": "uc-author-uc-delete",
+              "_parent": {
+                "$ref": "uc-author"
+              },
+              "end1": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-author-uc-delete-a",
+                "_parent": {
+                  "$ref": "uc-author-uc-delete"
+                },
+                "reference": {
+                  "$ref": "uc-author"
+                }
+              },
+              "end2": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-author-uc-delete-b",
+                "_parent": {
+                  "$ref": "uc-author-uc-delete"
+                },
+                "reference": {
+                  "$ref": "uc-delete"
+                }
+              }
+            },
+            {
+              "_type": "UMLAssociation",
+              "_id": "uc-author-uc-logout",
+              "_parent": {
+                "$ref": "uc-author"
+              },
+              "end1": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-author-uc-logout-a",
+                "_parent": {
+                  "$ref": "uc-author-uc-logout"
+                },
+                "reference": {
+                  "$ref": "uc-author"
+                }
+              },
+              "end2": {
+                "_type": "UMLAssociationEnd",
+                "_id": "uc-author-uc-logout-b",
+                "_parent": {
+                  "$ref": "uc-author-uc-logout"
+                },
+                "reference": {
+                  "$ref": "uc-logout"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

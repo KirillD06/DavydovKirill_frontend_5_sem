@@ -6,19 +6,24 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview --host 127.0.0.1 --port 3000 --strictPort"
+    "preview": "vite preview --host 127.0.0.1 --port 3000 --strictPort",
+    "generate:api": "swagger-typescript-api generate --axios --path http://127.0.0.1:3004/api-json --output src/api/generated --name backend.ts"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.14.0",
+    "axios": "^1.21.1",
     "bootstrap": "^5.3.8",
     "react": "^19.2.0",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.2.0",
+    "react-redux": "^9.3.1",
     "react-router-dom": "^7.9.5"
   },
   "devDependencies": {
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "@vitejs/plugin-react": "^5.0.4",
+    "swagger-typescript-api": "^13.14.0",
     "typescript": "~5.9.3",
     "vite": "^7.1.12"
   }
